@@ -18,7 +18,11 @@ class Palavra {
         })
     }
 
-    vaiParaProxima(casa){
-        console.log('indo para proxima ', casa);
+    vaiParaProxima(casaAtual){
+        console.log('indo para proxima ', casaAtual);
+    }
+    
+    vaiParaCasaAnterior(casaAtual){
+        console.log('indo para casa anterior', casaAtual);
     }
 }

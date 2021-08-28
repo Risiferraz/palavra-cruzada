@@ -7,15 +7,21 @@ class Casa {
         this.coluna = coluna;        
         this.valor = '';
         this.elemento = document.getElementById(this.linha + this.coluna)
-        this.elemento.addEventListener('keyup', () => this.executaAcoesQuandoSoltaATecla())
+        this.elemento.addEventListener('keyup', event => this.executaAcoesQuandoSoltaATecla(event))
         this.elemento.addEventListener('click', () => this.executaAcoesQuandoClicado())
-        this.elemento.addEventListener('blur', () => this.executaAcoesQuandoSairDaCasa())
+        this.elemento.addEventListener('blur', () => this.executaAcoesQuandoSairDaCasa())//ao sair de um elemento
 
     }
     
-    executaAcoesQuandoSoltaATecla(){
-        this.valor = this.elemento.value; 
-        this.palavra.vaiParaProxima(this)
+    executaAcoesQuandoSoltaATecla(event){
+        this.valor = this.elemento.value;
+        const key = event.keyCode || event.charCode;
+        const jogadorEstaApagando = key == 8 || key == 46 
+        if(jogadorEstaApagando){
+        this.palavra.vaiParaCasaAnterior(this)
+        }else{
+            this.palavra.vaiParaProxima(this)
+        }
     }
 
     executaAcoesQuandoClicado(){
