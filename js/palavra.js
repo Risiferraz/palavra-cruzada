@@ -8,7 +8,7 @@ class Palavra {
     }
 
     isCorreta(){
-        const palavraEscrita = this.casas.map(c => c.valor).join("");
+        const palavraEscrita = this.casas.map(c => c.valor).join("");//map transforma a cas na letra que ela recebe
         return palavraEscrita == this.palavraCerta;
     }
 
@@ -19,10 +19,23 @@ class Palavra {
     }
 
     vaiParaProxima(casaAtual){
-        console.log('indo para proxima ', casaAtual);
+        console.log('indo para proxima', casaAtual);
     }
     
     vaiParaCasaAnterior(casaAtual){
-        console.log('indo para casa anterior', casaAtual);
+       //console.log('indo para casa anterior', this.pegaIndiceDaCasaAnterior(casaAtual));
+       const indice=this.pegaIndiceDaCasaAnterior(casaAtual)
+       this.colocaFocoNaCasaComIndice(indice)
+       // console.log('indo para casa anterior', this.casas.indexOf(casaAtual));indexOf = método
+    }
+
+    pegaIndiceDaCasaAnterior(casaAtual){
+        return this.casas.indexOf(casaAtual) -1;
+    }
+    pegaIndiceDaProximaCasa(casaAtual){
+        return this.casas.indexOf(casaAtual) +1
+    }
+    colocaFocoNaCasaComIndice(indice){
+        this.casas[indice] .colocaFocoNoElemento()
     }
 }

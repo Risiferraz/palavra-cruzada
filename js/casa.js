@@ -30,5 +30,8 @@ class Casa {
     executaAcoesQuandoSairDaCasa(){
         this.elemento.classList.remove("casa-selecionada");
     }
-
+    colocaFocoNoElemento(){
+        this.elemento.focus()
+        this.executaAcoesQuandoClicado()
+    }
 }
