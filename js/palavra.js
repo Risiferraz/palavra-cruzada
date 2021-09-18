@@ -3,13 +3,13 @@ class Palavra {
         this.casas = casas;
         this.palavraCerta = palavraCerta;
         this.elemento = document.getElementById("palavra")
-        this.casas.forEach(c => c.palavra = this);
+         this.casas.forEach(c => c.palavra = this);
         
     }
 
     isCorreta(){
         const palavraEscrita = this.casas.map(c => c.valor).join("");//map transforma a cas na letra que ela recebe
-        return palavraEscrita == this.palavraCerta;
+        return palavraEscrita.toUppercase() == this.palavraCerta.toUppercase();
     }
 
     mostraCasa(){
@@ -19,7 +19,8 @@ class Palavra {
     }
 
     vaiParaProxima(casaAtual){
-        console.log('indo para proxima', casaAtual);
+       const indice=this.pegaIndiceDaProximaCasa(casaAtual)
+       this.colocaFocoNaCasaComIndice(indice)
     }
     
     vaiParaCasaAnterior(casaAtual){

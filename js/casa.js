@@ -15,15 +15,19 @@ class Casa {
     
     executaAcoesQuandoSoltaATecla(event){
         this.valor = this.elemento.value;
-        const key = event.keyCode || event.charCode;
-        const jogadorEstaApagando = key == 8 || key == 46 
-        if(jogadorEstaApagando){
-        this.palavra.vaiParaCasaAnterior(this)
+        console.log("o valor é",this.valor)
+        if(this.isJogadorApagando(event)) {
+            this.palavra.vaiParaCasaAnterior(this)
         }else{
             this.palavra.vaiParaProxima(this)
         }
     }
-
+    isJogadorApagando(event) {
+        const key = event.keyCode || event.charCode;
+        const numeroDaTeclaBackspace = 8
+        const numeroDaTeclaBackspaceOpcional = 46
+        return key == numeroDaTeclaBackspace || key == numeroDaTeclaBackspaceOpcional 
+    }
     executaAcoesQuandoClicado(){
         this.elemento.classList.add("casa-selecionada");
     }

@@ -1,3 +1,6 @@
 .casa-selecionada {
     background-color: blueviolet;
 }
+input{
+    text-transform:uppercase;
+}
