@@ -2,8 +2,8 @@ class Palavra {
     constructor(casas, palavraCerta){
         this.casas = casas;
         this.palavraCerta = palavraCerta;
-        this.elemento = document.getElementById("palavra")
-         this.casas.forEach(c => c.palavra = this);
+        this.elementoDoHTML = document.getElementById("palavra")
+        this.casas.forEach(c => c.palavra = this);
         
     }
 
@@ -38,5 +38,8 @@ class Palavra {
     }
     colocaFocoNaCasaComIndice(indice){
         this.casas[indice] .colocaFocoNoElemento()
+    }
+    identifiqueAPalavraSelecionada(){
+        this.casas.forEach(casa=> casa.marcaPalavraSelecionada())
     }
 }

@@ -1,6 +1,9 @@
 .casa-selecionada {
-    background-color: blueviolet;
+    background-color: rgb(61, 43, 226);
 }
 input{
     text-transform:uppercase;
+}
+.palavra-selecionada {
+    background-color: aqua;
 }
