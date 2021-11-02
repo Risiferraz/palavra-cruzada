@@ -3,7 +3,20 @@
 }
 input{
     text-transform:uppercase;
+    width: 42px;
+    height: 42px;
 }
 .palavra-selecionada {
     background-color: aqua;
+}
+.container{
+    background-color: rgb(23, 23, 23);
+    width: 1000px;
+    min-height: 300px;
+}
+.pergunta{
+    background-color: gray;
+    border: 2px solid black;
+    margin: 15px;
+    padding: 10px;
 }

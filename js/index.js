@@ -1,4 +1,4 @@
-const casas = [
+const casasRisi = [
     new Casa('1', 'A'),
     new Casa('1', 'B'),
     new Casa('1', 'C'),
@@ -11,11 +11,6 @@ const casasDado = [
     new Casa('2', 'A'),
 ]
 
-const palavra = new Palavra(casas, 'RISI');
-const palavra2 = new Palavra(casasDado, 'DADO');
-
-
-console.log(palavra.isCorreta());
-
-palavra.mostraCasa()
-
+const pergunta1 = ' qual o meu nome'
+const palavra1 = new Palavra(casasRisi, 'RISI', pergunta1,1);// entre parenteses = construtor da palavra - identificado pela palavr "new"
+const palavra2 = new Palavra(casasDado, 'DADO', "quadradinho com números",2);

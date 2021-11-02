@@ -1,10 +1,11 @@
 class Palavra {
-    constructor(casas, palavraCerta){
+    constructor(casas, palavraCerta, pergunta, numeroBotao){
+        this.botao = document.getElementById(`botao-pergunta${numeroBotao}`);
         this.casas = casas;
         this.palavraCerta = palavraCerta;
-        this.elementoDoHTML = document.getElementById("palavra")
+        this.pergunta = pergunta;
         this.casas.forEach(c => c.palavra = this);
-        
+        this.botao.addEventListener('click', ()=> this.acoesQuandoClicarNoBotao())
     }
 
     isCorreta(){
@@ -40,6 +41,11 @@ class Palavra {
         this.casas[indice] .colocaFocoNoElemento()
     }
     identifiqueAPalavraSelecionada(){
+        document.getElementById('pergunta-da-vez').textContent=this.pergunta;
         this.casas.forEach(casa=> casa.marcaPalavraSelecionada())
+    }
+    acoesQuandoClicarNoBotao(){
+        this.colocaFocoNaCasaComIndice(0)
+        this.identifiqueAPalavraSelecionada()
     }
 }
