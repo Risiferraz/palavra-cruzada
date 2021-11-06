@@ -19,4 +19,8 @@ input{
     border: 2px solid black;
     margin: 15px;
     padding: 10px;
+    border-radius: 5px;
+}
+.palavra-certa {
+    background-color: rgb(74, 138, 98);
 }

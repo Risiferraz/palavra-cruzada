@@ -7,12 +7,12 @@ class Casa {
         this.coluna = coluna;        
         this.valor = '';
         this.elementoDoHTML = document.getElementById(this.linha + this.coluna)
+        this.elementoDoHTML.value= this.valor
         this.elementoDoHTML.addEventListener('keyup', event => this.executaAcoesQuandoSoltaATecla(event))
         this.elementoDoHTML.addEventListener('click', () => this.executaAcoesQuandoClicado())
         this.elementoDoHTML.addEventListener('blur', () => this.executaAcoesQuandoSairDaCasa())//ao sair de um elemento
 
     }
-    
     executaAcoesQuandoSoltaATecla(event){
         this.valor = this.elementoDoHTML.value;
         console.log("o valor é",this.valor)
@@ -42,5 +42,9 @@ class Casa {
     }
     marcaPalavraSelecionada(){
         this.elementoDoHTML.classList.add("palavra-selecionada");
+    }
+    marcaPalavraCerta(){
+        this.elementoDoHTML.classList.add("palavra-certa");
+        this.elementoDoHTML.readOnly = true; 
     }
 }
