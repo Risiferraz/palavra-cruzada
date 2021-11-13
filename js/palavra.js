@@ -1,4 +1,5 @@
 class Palavra {
+    jogoPalavraCruzada = null
     constructor(casas, palavraCerta, pergunta, numeroBotao) {
         this.botao = document.getElementById(`botao-pergunta${numeroBotao}`);
         this.casas = casas;
@@ -8,6 +9,7 @@ class Palavra {
         this.botao.addEventListener('click', () => this.acoesQuandoClicarNoBotao())
     }
 
+
     isCorreta() {
         const palavraEscrita = this.casas.map(c => c.valor).join("");//map transforma a cas na letra que ela recebe
         return palavraEscrita.toUpperCase() == this.palavraCerta.toUpperCase();
@@ -15,9 +17,12 @@ class Palavra {
     realizeAcoesAoTerminarAPalavra() {
         if(this.isCorreta()){
             this.casas.forEach(c=>c.marcaPalavraCerta())
-            
         } else{
-            alert('a palavra está errada')
+            this.casas.forEach(c=>c.marcaPalavraErrada())
+            setTimeout(()=>{
+                this.casas.forEach(c=>c.resetaCasa())
+                this.colocaFocoNaCasaComIndice(0)
+            }, 1000)
         }
     }
     mostraCasa() {
@@ -56,11 +61,15 @@ class Palavra {
         this.casas[indice].colocaFocoNoElemento()
     }
     identifiqueAPalavraSelecionada() {
+        this.jogoPalavraCruzada.tiraOFocoDeTodasAsPalavras()
         document.getElementById('pergunta-da-vez').textContent = this.pergunta;
         this.casas.forEach(casa => casa.marcaPalavraSelecionada())
     }
     acoesQuandoClicarNoBotao() {
         this.colocaFocoNaCasaComIndice(0)
         this.identifiqueAPalavraSelecionada()
+    }
+    tiraFocoDaPalavra(){
+        this.casas.forEach(c=>c.tiraFocoDaCasa())
     }
 }

@@ -5,9 +5,8 @@ class Casa {
     constructor(linha, coluna){
         this.linha = linha;
         this.coluna = coluna;        
-        this.valor = '';
         this.elementoDoHTML = document.getElementById(this.linha + this.coluna)
-        this.elementoDoHTML.value= this.valor
+        this.limpaCasa();
         this.elementoDoHTML.addEventListener('keyup', event => this.executaAcoesQuandoSoltaATecla(event))
         this.elementoDoHTML.addEventListener('click', () => this.executaAcoesQuandoClicado())
         this.elementoDoHTML.addEventListener('blur', () => this.executaAcoesQuandoSairDaCasa())//ao sair de um elemento
@@ -46,5 +45,20 @@ class Casa {
     marcaPalavraCerta(){
         this.elementoDoHTML.classList.add("palavra-certa");
         this.elementoDoHTML.readOnly = true; 
+    }
+    marcaPalavraErrada(){
+        this.elementoDoHTML.classList.add("palavra-errada")
+    }
+    resetaCasa(){
+        this.elementoDoHTML.classList.remove("palavra-errada")
+        this.limpaCasa()
+    }
+    limpaCasa(){
+        this.valor = '';
+        this.elementoDoHTML.value= this.valor
+    }
+    tiraFocoDaCasa(){
+        this.elementoDoHTML.classList.remove("palavra-selecionada");
+        this.elementoDoHTML.classList.remove("casa-selecionada");
     }
 }

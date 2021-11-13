@@ -12,5 +12,8 @@ const casasDado = [
 ]
 
 const pergunta1 = ' qual o meu nome'
-const palavra1 = new Palavra(casasRisi, 'RISI', pergunta1,1);// entre parenteses = construtor da palavra - identificado pela palavr "new"
-const palavra2 = new Palavra(casasDado, 'DADO', "quadradinho com números",2);
+const listaDePalavras = [
+    new Palavra(casasDado, 'DADO', "quadradinho com números",2),
+    new Palavra(casasRisi, 'RISI', pergunta1,1),// entre parenteses = construtor da palavra - identificado pela palavr "new"
+]
+new JogoPalavraCruzada(listaDePalavras)

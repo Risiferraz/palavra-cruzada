@@ -24,3 +24,6 @@ input{
 .palavra-certa {
     background-color: rgb(74, 138, 98);
 }
+.palavra-errada{
+    background-color: rgb(255, 5, 5);
+}
