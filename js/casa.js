@@ -1,6 +1,5 @@
 class Casa {
-    
-    palavra = null;
+    palavra = {}
     
     constructor(linha, coluna){
         this.linha = linha;

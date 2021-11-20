@@ -1,12 +1,14 @@
 class Palavra {
     jogoPalavraCruzada = null
-    constructor(casas, palavraCerta, pergunta, numeroBotao) {
+    constructor(casas, palavraCerta, pergunta, numeroBotao, orientacao) {
         this.botao = document.getElementById(`botao-pergunta${numeroBotao}`);
+        this.orientacao = orientacao;
         this.casas = casas;
         this.palavraCerta = palavraCerta;
         this.pergunta = pergunta;
-        this.casas.forEach(c => c.palavra = this);
+        this.casas.forEach(c => c.palavra[this.orientacao] =this);
         this.botao.addEventListener('click', () => this.acoesQuandoClicarNoBotao())
+        this.casas.forEach(c => console.log(c.palavra))
     }
 
 
@@ -15,12 +17,12 @@ class Palavra {
         return palavraEscrita.toUpperCase() == this.palavraCerta.toUpperCase();
     }
     realizeAcoesAoTerminarAPalavra() {
-        if(this.isCorreta()){
-            this.casas.forEach(c=>c.marcaPalavraCerta())
-        } else{
-            this.casas.forEach(c=>c.marcaPalavraErrada())
-            setTimeout(()=>{
-                this.casas.forEach(c=>c.resetaCasa())
+        if (this.isCorreta()) {
+            this.casas.forEach(c => c.marcaPalavraCerta())
+        } else {
+            this.casas.forEach(c => c.marcaPalavraErrada())
+            setTimeout(() => {
+                this.casas.forEach(c => c.resetaCasa())
                 this.colocaFocoNaCasaComIndice(0)
             }, 1000)
         }
@@ -30,7 +32,7 @@ class Palavra {
             console.log(c.elemento)
         })
     }
-    temProximaCasa(indice){
+    temProximaCasa(indice) {
         return !!this.casas[indice]
     }
     vaiParaProxima(casaAtual) {
@@ -39,7 +41,7 @@ class Palavra {
             this.colocaFocoNaCasaComIndice(indice)
 
         } else {
-           this.realizeAcoesAoTerminarAPalavra()
+            this.realizeAcoesAoTerminarAPalavra()
 
         }
     }
@@ -68,8 +70,9 @@ class Palavra {
     acoesQuandoClicarNoBotao() {
         this.identifiqueAPalavraSelecionada()
         this.colocaFocoNaCasaComIndice(0)
+        this.jogoPalavraCruzada.mudaOrientacaoPara(this.orientacao)
     }
-    tiraFocoDaPalavra(){
-        this.casas.forEach(c=>c.tiraFocoDaCasa())
+    tiraFocoDaPalavra() {
+        this.casas.forEach(c => c.tiraFocoDaCasa())
     }
 }
