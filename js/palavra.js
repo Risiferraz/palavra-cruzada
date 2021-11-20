@@ -66,8 +66,8 @@ class Palavra {
         this.casas.forEach(casa => casa.marcaPalavraSelecionada())
     }
     acoesQuandoClicarNoBotao() {
-        this.colocaFocoNaCasaComIndice(0)
         this.identifiqueAPalavraSelecionada()
+        this.colocaFocoNaCasaComIndice(0)
     }
     tiraFocoDaPalavra(){
         this.casas.forEach(c=>c.tiraFocoDaCasa())
