@@ -1,5 +1,6 @@
 class Casa {
     palavra = {}
+    orientacaoDaVez = null
     
     constructor(linha, coluna){
         this.linha = linha;
@@ -15,9 +16,9 @@ class Casa {
         this.valor = this.elementoDoHTML.value;
         console.log("o valor é",this.valor)
         if(this.isJogadorApagando(event)) {
-            this.palavra.vaiParaCasaAnterior(this)
+            this.pegaPalavraCerta().vaiParaCasaAnterior(this)
         }else{
-            this.palavra.vaiParaProxima(this)
+            this.pegaPalavraCerta().vaiParaProxima(this)
         }
     }
     isJogadorApagando(event) {
@@ -27,7 +28,7 @@ class Casa {
         return key == numeroDaTeclaBackspace || key == numeroDaTeclaBackspaceOpcional 
     }
     executaAcoesQuandoClicado(){
-        this.palavra.identifiqueAPalavraSelecionada();
+        this.pegaPalavraCerta().identifiqueAPalavraSelecionada();
         this.elementoDoHTML.classList.add("casa-selecionada");
         this.elementoDoHTML.classList.remove("palavra-selecionada");
     }
@@ -59,5 +60,8 @@ class Casa {
     tiraFocoDaCasa(){
         this.elementoDoHTML.classList.remove("palavra-selecionada");
         this.elementoDoHTML.classList.remove("casa-selecionada");
+    }
+    pegaPalavraCerta(){
+        return this.palavra[this.orientacaoDaVez]
     }
 }

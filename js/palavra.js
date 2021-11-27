@@ -66,6 +66,7 @@ class Palavra {
         this.jogoPalavraCruzada.tiraOFocoDeTodasAsPalavras()
         document.getElementById('pergunta-da-vez').textContent = this.pergunta;
         this.casas.forEach(casa => casa.marcaPalavraSelecionada())
+        this.casas.forEach(casa => casa.orientacaoDaVez=this.orientacao)
     }
     acoesQuandoClicarNoBotao() {
         this.identifiqueAPalavraSelecionada()

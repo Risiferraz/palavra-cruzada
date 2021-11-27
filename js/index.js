@@ -5,42 +5,50 @@ const orientacao =  {
     HORIZONTAL : 'HORIZONTAL', 
 }
 const casa1A = new Casa('1', 'A')
+const casa2A = new Casa('2', 'A')
+const casa3A = new Casa('3', 'A')
+const casa4A = new Casa('4', 'A')
+
+const casa1D = new Casa('1', 'D')
+const casa2D = new Casa('2', 'D')
+const casa3D = new Casa('3', 'D')
+const casa4D = new Casa('4', 'D')
 
 const casasRisi = [
     casa1A,
     new Casa('1', 'B'),
     new Casa('1', 'C'),
-    new Casa('1', 'D'),
+    casa1D,
 ]
 const casasDado = [
-    new Casa('2', 'D'),
+    casa2D,
     new Casa('2', 'C'),
     new Casa('2', 'B'),
-    new Casa('2', 'A'),
+    casa2A,
 ]
 const casasRota = [
-    new Casa('3', 'D'),
+    casa3D,
     new Casa('3', 'C'),
     new Casa('3', 'B'),
-    new Casa('3', 'A'),
+    casa3A,
 ]
 const casasBelo = [
-    new Casa('4', 'A'),
+    casa4A,
     new Casa('4', 'B'),
     new Casa('4', 'C'),
-    new Casa('4', 'D'),
+    casa4D,
 ]
 const casasSeta = [
     casa1A,
-    new Casa('2', 'A'),
-    new Casa('3', 'A'),
-    new Casa('4', 'A'),
+    casa2A,
+    casa3A,
+    casa4A,
 ]
 const casasTiro = [
-    new Casa('1', 'D'),
-    new Casa('2', 'D'),
-    new Casa('3', 'D'),
-    new Casa('4', 'D'),
+    casa1D,
+    casa2D,
+    casa3D,
+    casa4D,
 ]
 
 const pergunta1 = ' qual o meu nome'

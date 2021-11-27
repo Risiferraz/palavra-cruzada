@@ -10,5 +10,6 @@ class JogoPalavraCruzada {
     mudaOrientacaoPara(orientacao){
         this.orientacao = orientacao;
         console.log("h",this.orientacao)
+        document.getElementById("orientacao").textContent= this.orientacao;
     }
 }
