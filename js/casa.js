@@ -36,8 +36,13 @@ class Casa {
         this.elementoDoHTML.classList.remove("casa-selecionada");
     }
     colocaFocoNoElemento() {
-        this.elementoDoHTML.focus()
-        this.executaAcoesQuandoClicado()
+        if(this.isCasaCorreta()){
+            this.pegaPalavraCerta().vaiParaProxima(this)
+        }
+        else{
+            this.elementoDoHTML.focus()
+            this.executaAcoesQuandoClicado()
+        }
     }
     marcaPalavraSelecionada() {
         this.elementoDoHTML.classList.add("palavra-selecionada");
