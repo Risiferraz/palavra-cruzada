@@ -1,6 +1,6 @@
 class Casa {
     palavra = {}
-    orientacaoDaVez = null
+    orientacaoDaVez = orientacao.HORIZONTAL;
 
     constructor(linha, coluna) {
         this.linha = linha;
