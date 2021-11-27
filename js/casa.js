@@ -1,10 +1,10 @@
 class Casa {
     palavra = {}
     orientacaoDaVez = null
-    
-    constructor(linha, coluna){
+
+    constructor(linha, coluna) {
         this.linha = linha;
-        this.coluna = coluna;        
+        this.coluna = coluna;
         this.elementoDoHTML = document.getElementById(this.linha + this.coluna)
         this.limpaCasa();
         this.elementoDoHTML.addEventListener('keyup', event => this.executaAcoesQuandoSoltaATecla(event))
@@ -12,12 +12,12 @@ class Casa {
         this.elementoDoHTML.addEventListener('blur', () => this.executaAcoesQuandoSairDaCasa())//ao sair de um elemento
 
     }
-    executaAcoesQuandoSoltaATecla(event){
+    executaAcoesQuandoSoltaATecla(event) {
         this.valor = this.elementoDoHTML.value;
-        console.log("o valor é",this.valor)
-        if(this.isJogadorApagando(event)) {
+        console.log("o valor é", this.valor)
+        if (this.isJogadorApagando(event)) {
             this.pegaPalavraCerta().vaiParaCasaAnterior(this)
-        }else{
+        } else {
             this.pegaPalavraCerta().vaiParaProxima(this)
         }
     }
@@ -25,43 +25,50 @@ class Casa {
         const key = event.keyCode || event.charCode;
         const numeroDaTeclaBackspace = 8
         const numeroDaTeclaBackspaceOpcional = 46
-        return key == numeroDaTeclaBackspace || key == numeroDaTeclaBackspaceOpcional 
+        return key == numeroDaTeclaBackspace || key == numeroDaTeclaBackspaceOpcional
     }
-    executaAcoesQuandoClicado(){
+    executaAcoesQuandoClicado() {
         this.pegaPalavraCerta().identifiqueAPalavraSelecionada();
         this.elementoDoHTML.classList.add("casa-selecionada");
         this.elementoDoHTML.classList.remove("palavra-selecionada");
     }
-    executaAcoesQuandoSairDaCasa(){
+    executaAcoesQuandoSairDaCasa() {
         this.elementoDoHTML.classList.remove("casa-selecionada");
     }
-    colocaFocoNoElemento(){
+    colocaFocoNoElemento() {
         this.elementoDoHTML.focus()
         this.executaAcoesQuandoClicado()
     }
-    marcaPalavraSelecionada(){
+    marcaPalavraSelecionada() {
         this.elementoDoHTML.classList.add("palavra-selecionada");
     }
-    marcaPalavraCerta(){
+    marcaPalavraCerta() {
         this.elementoDoHTML.classList.add("palavra-certa");
-        this.elementoDoHTML.readOnly = true; 
+        this.elementoDoHTML.readOnly = true;
     }
-    marcaPalavraErrada(){
-        this.elementoDoHTML.classList.add("palavra-errada")
+    marcaPalavraErrada() {
+        if (!this.isCasaCorreta()) {
+            this.elementoDoHTML.classList.add("palavra-errada")
+        }
     }
-    resetaCasa(){
-        this.elementoDoHTML.classList.remove("palavra-errada")
-        this.limpaCasa()
+    isCasaCorreta() {
+        return this.elementoDoHTML.readOnly;
     }
-    limpaCasa(){
+    resetaCasa() {
+        if (!this.isCasaCorreta()) {
+            this.elementoDoHTML.classList.remove("palavra-errada")
+            this.limpaCasa()
+        }
+    }
+    limpaCasa() {
         this.valor = '';
-        this.elementoDoHTML.value= this.valor
+        this.elementoDoHTML.value = this.valor
     }
-    tiraFocoDaCasa(){
+    tiraFocoDaCasa() {
         this.elementoDoHTML.classList.remove("palavra-selecionada");
         this.elementoDoHTML.classList.remove("casa-selecionada");
     }
-    pegaPalavraCerta(){
+    pegaPalavraCerta() {
         return this.palavra[this.orientacaoDaVez]
     }
 }
