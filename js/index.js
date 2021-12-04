@@ -1,8 +1,11 @@
+
+
+
 //TODO FAZER O BUILDER DO JOGO PALAVRA CRUZADA
 //TODO FAZER casas com mesma linha e coluna ser uma só
-const orientacao =  { 
-    VERTICAL : 'VERTICAL', 
-    HORIZONTAL : 'HORIZONTAL', 
+const orientacao = {
+    VERTICAL: 'VERTICAL',
+    HORIZONTAL: 'HORIZONTAL',
 }
 const casa1A = new Casa('1', 'A')
 const casa2A = new Casa('2', 'A')
@@ -20,48 +23,81 @@ const casasRisi = [
     new Casa('1', 'C'),
     casa1D,
 ]
-const casasDado = [
+const casasSino = [
     casa2D,
     new Casa('2', 'C'),
     new Casa('2', 'B'),
     casa2A,
 ]
-const casasRota = [
-    casa3D,
-    new Casa('3', 'C'),
-    new Casa('3', 'B'),
+const casasTais = [
     casa3A,
+    new Casa('3', 'B'),
+    new Casa('3', 'C'),
+    casa3D,
 ]
-const casasBelo = [
+const casasArno = [
     casa4A,
     new Casa('4', 'B'),
     new Casa('4', 'C'),
     casa4D,
 ]
-const casasSeta = [
+const casasRota = [
     casa1A,
     casa2A,
     casa3A,
     casa4A,
 ]
-const casasTiro = [
+const casasIsso = [
     casa1D,
     casa2D,
     casa3D,
     casa4D,
 ]
 
-const pergunta1 = ' qual o meu nome'
-const pergunta3 = ' caminho, direção'
-const pergunta4 = ' bonito'
+const pergunta1 = ' Pergunta 1'
+const pergunta2 = ' Pergunta 2'
+const pergunta3 = ' Pergunta 3'
+const pergunta4 = ' Pergunta 4'
 const pergunta5 = ' Pergunta 5'
-const pergunta8 = ' Pergunta 8'
+const pergunta6 = ' Pergunta 6'
 const listaDePalavras = [
-    new Palavra(casasDado, 'DADO', "quadradinho com números",2,orientacao.HORIZONTAL),
-    new Palavra(casasRisi, 'RISI', pergunta1,1,orientacao.HORIZONTAL),// entre parenteses = construtor da palavra - identificado pela palavr "new"
-    new Palavra(casasRota, 'ROTA', pergunta3,3,orientacao.HORIZONTAL),// entre parenteses = construtor da palavra - identificado pela palavr "new"
-    new Palavra(casasBelo, 'BELO', pergunta4,4,orientacao.HORIZONTAL),// entre parenteses = construtor da palavra - identificado pela palavr "new"
-    new Palavra(casasSeta, 'SETA', pergunta5,5,orientacao.VERTICAL),// entre parenteses = construtor da palavra - identificado pela palavr "new"
-    new Palavra(casasTiro, 'TIRO', pergunta8,8,orientacao.VERTICAL),// entre parenteses = construtor da palavra - identificado pela palavr "new"
+    new PalavraBuilder()
+        .comAsCasas(casasRisi)
+        .comAPalavraCerta('RISI')
+        .comAPergunta(pergunta1)
+        .comONumeroBotao(1)
+        .comAOrientacao(orientacao.HORIZONTAL)
+        .constroe(),
+    new PalavraBuilder()
+        .comAsCasas(casasSino)
+        .comAPalavraCerta('SINO')
+        .comAPergunta(pergunta2)
+        .comONumeroBotao(2)
+        .comAOrientacao(orientacao.HORIZONTAL)
+        .constroe(),
+    new PalavraBuilder()
+        .comAsCasas(casasTais)
+        .comAPalavraCerta('TAIS')
+        .comAPergunta(pergunta3)
+        .comONumeroBotao(3)
+        .comAOrientacao(orientacao.HORIZONTAL)
+        .constroe(),
+    new PalavraBuilder()
+        .comAsCasas(casasArno)
+        .comAPalavraCerta('ARNO')
+        .comAPergunta(pergunta4)
+        .comONumeroBotao(4)
+        .comAOrientacao(orientacao.HORIZONTAL)
+        .constroe(),
+    new PalavraBuilder()
+        .comAsCasas(casasRota)
+        .comAPalavraCerta('ROTA')
+        .comAPergunta(pergunta4)
+        .comONumeroBotao(4)
+        .comAOrientacao(orientacao.VERTICAL)
+        .constroe(),
+    
+    
+    new Palavra(casasIsso, 'ISSO', pergunta6, 6, orientacao.VERTICAL),// entre parenteses = construtor da palavra - identificado pela palavr "new"
 ]
 new JogoPalavraCruzada(listaDePalavras)
