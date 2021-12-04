@@ -1,5 +1,6 @@
 let segundos = 0
 let minutos = 0
+let horas = 0
 
 setInterval(() => {
    atualizaCronometro() 
@@ -8,9 +9,10 @@ function atualizaCronometro(){
     segundos++
     if (segundos>=60){
     minutos++
-    segundos=0    
+    segundos=0
     }
     const segundosString = segundos <=9 ?`0${segundos}` : `${segundos}`
+    const minutosString = minutos.length ?`0${segundos}` : `${segundos}`
     const cronometro = `${minutos}:${segundosString}`
     document.getElementById('cronometro').textContent= cronometro
 }
