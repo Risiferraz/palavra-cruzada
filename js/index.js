@@ -1,5 +1,19 @@
+let segundos = 0
+let minutos = 0
 
-
+setInterval(() => {
+   atualizaCronometro() 
+}, 1000);
+function atualizaCronometro(){
+    segundos++
+    if (segundos>=60){
+    minutos++
+    segundos=0    
+    }
+    const segundosString = segundos <=9 ?`0${segundos}` : `${segundos}`
+    const cronometro = `${minutos}:${segundosString}`
+    document.getElementById('cronometro').textContent= cronometro
+}
 
 //TODO FAZER O BUILDER DO JOGO PALAVRA CRUZADA
 //TODO FAZER casas com mesma linha e coluna ser uma só
