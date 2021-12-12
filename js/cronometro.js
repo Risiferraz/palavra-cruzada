@@ -11,6 +11,9 @@ function atualizaCronometro(){
     minutos++
     segundos=0
     }
+    if (minutos==60 && segundos==0){
+        alert("TEMPO ESGOTADO")
+    }
     const segundosString = segundos <=9 ?`0${segundos}` : `${segundos}`
     const minutosString = minutos <= 9 ?`0${minutos}` : `${minutos}`
     const cronometro = `${minutosString}:${segundosString}`
