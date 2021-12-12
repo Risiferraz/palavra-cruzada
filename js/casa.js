@@ -14,7 +14,6 @@ class Casa {
     }
     executaAcoesQuandoSoltaATecla(event) {
         this.valor = this.elementoDoHTML.value;
-        console.log("o valor é", this.valor)
         if (this.isJogadorApagando(event)) {
             this.pegaPalavraCerta().vaiParaCasaAnterior(this)
         } else {

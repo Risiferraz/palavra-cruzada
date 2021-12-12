@@ -8,7 +8,6 @@ class Palavra {
         this.pergunta = pergunta;
         this.casas.forEach(c => c.palavra[this.orientacao] =this);
         this.botao.addEventListener('click', () => this.acoesQuandoClicarNoBotao())
-        this.casas.forEach(c => console.log(c.palavra))
     }
 
     isCorreta() {
@@ -18,6 +17,7 @@ class Palavra {
     realizeAcoesAoTerminarAPalavra() {
         if (this.isCorreta()) {
             this.casas.forEach(c => c.marcaPalavraCerta())
+            this.jogoPalavraCruzada.adicionaPontuacao()
         } else {
             this.casas.forEach(c => c.marcaPalavraErrada())
             setTimeout(() => {
@@ -27,9 +27,9 @@ class Palavra {
         }
     }
     mostraCasa() {
-        this.casas.forEach(c => {
-            console.log(c.elemento)
-        })
+        // this.casas.forEach(c => {
+        //     console.log(c.elemento)
+        // }) - não precisa mais de uma função para mostrar se a plavara estava selecionando as casas certas
     }
     temProximaCasa(indice) {
         return !!this.casas[indice]
@@ -46,12 +46,9 @@ class Palavra {
     }
 
     vaiParaCasaAnterior(casaAtual) {
-        //console.log('indo para casa anterior', this.pegaIndiceDaCasaAnterior(casaAtual));
         const indice = this.pegaIndiceDaCasaAnterior(casaAtual)
         this.colocaFocoNaCasaComIndice(indice)
-        // console.log('indo para casa anterior', this.casas.indexOf(casaAtual));indexOf = método
     }
-
     pegaIndiceDaCasaAnterior(casaAtual) {
         return this.casas.indexOf(casaAtual) - 1;
     }
