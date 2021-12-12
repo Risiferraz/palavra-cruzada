@@ -1,21 +1,3 @@
-let segundos = 0
-let minutos = 0
-let horas = 0
-
-setInterval(() => {
-   atualizaCronometro() 
-}, 1000);
-function atualizaCronometro(){
-    segundos++
-    if (segundos>=60){
-    minutos++
-    segundos=0
-    }
-    const segundosString = segundos <=9 ?`0${segundos}` : `${segundos}`
-    const minutosString = minutos.length ?`0${segundos}` : `${segundos}`
-    const cronometro = `${minutos}:${segundosString}`
-    document.getElementById('cronometro').textContent= cronometro
-}
 
 //TODO FAZER O BUILDER DO JOGO PALAVRA CRUZADA
 //TODO FAZER casas com mesma linha e coluna ser uma só
@@ -108,12 +90,16 @@ const listaDePalavras = [
     new PalavraBuilder()
         .comAsCasas(casasRota)
         .comAPalavraCerta('ROTA')
-        .comAPergunta(pergunta4)
-        .comONumeroBotao(4)
+        .comAPergunta(pergunta5)
+        .comONumeroBotao(5)
         .comAOrientacao(orientacao.VERTICAL)
-        .constroe(),
-    
-    
-    new Palavra(casasIsso, 'ISSO', pergunta6, 6, orientacao.VERTICAL),// entre parenteses = construtor da palavra - identificado pela palavr "new"
+        .constroe(),   
+    new PalavraBuilder()
+        .comAsCasas(casasIsso)
+        .comAPalavraCerta('ISSO')
+        .comAPergunta(pergunta6)
+        .comONumeroBotao(6)
+        .comAOrientacao(orientacao.VERTICAL)
+        .constroe(),   
 ]
 new JogoPalavraCruzada(listaDePalavras)

@@ -11,7 +11,6 @@ class Palavra {
         this.casas.forEach(c => console.log(c.palavra))
     }
 
-
     isCorreta() {
         const palavraEscrita = this.casas.map(c => c.valor).join("");//map transforma a cas na letra que ela recebe
         return palavraEscrita.toUpperCase() == this.palavraCerta.toUpperCase();
