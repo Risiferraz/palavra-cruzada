@@ -9,7 +9,6 @@ class Palavra {
         this.casas.forEach(c => c.palavra[this.orientacao] =this);
         this.botao.addEventListener('click', () => this.acoesQuandoClicarNoBotao())
     }
-
     isCorreta() {
         const palavraEscrita = this.casas.map(c => c.valor).join("");//map transforma a cas na letra que ela recebe
         return palavraEscrita.toUpperCase() == this.palavraCerta.toUpperCase();
@@ -17,7 +16,7 @@ class Palavra {
     realizeAcoesAoTerminarAPalavra() {
         if (this.isCorreta()) {
             this.casas.forEach(c => c.marcaPalavraCerta())
-            this.jogoPalavraCruzada.adicionaPontuacao()
+            this.jogoPalavraCruzada.realizaAcoesAoAcertarPalavra()
         } else {
             this.casas.forEach(c => c.marcaPalavraErrada())
             setTimeout(() => {

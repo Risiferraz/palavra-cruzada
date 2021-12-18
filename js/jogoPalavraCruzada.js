@@ -20,4 +20,14 @@ class JogoPalavraCruzada {
         this.pontuacao+=10
         this.atualizaPontuacaoNoJogo()
     }
+    realizaAcoesAoAcertarPalavra(){
+        this.adicionaPontuacao()
+        this.verificaSeJogoFoiFinalizado()
+    }
+    verificaSeJogoFoiFinalizado(){
+        if(this.palavras.find(p=>!p.isCorreta())==null){
+            // alert('JOGO FINALIZADO');
+            document.getElementById("vitoria").style.display= "block"
+        }
+    }
 }

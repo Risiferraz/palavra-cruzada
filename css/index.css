@@ -27,3 +27,6 @@ input{
 .palavra-errada{
     background-color: rgb(255, 5, 5);
 }
+#vitoria{
+    display: none;
+}
