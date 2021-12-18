@@ -1,3 +1,8 @@
+const cronometro =new Cronometro()
+    setInterval(() => {
+    cronometro.atualizaCronometro()
+    console.log('RISI')
+    }, 1000);
 
 //TODO FAZER O BUILDER DO JOGO PALAVRA CRUZADA
 //TODO FAZER casas com mesma linha e coluna ser uma só
@@ -93,13 +98,13 @@ const listaDePalavras = [
         .comAPergunta(pergunta5)
         .comONumeroBotao(5)
         .comAOrientacao(orientacao.VERTICAL)
-        .constroe(),   
+        .constroe(),
     new PalavraBuilder()
         .comAsCasas(casasIsso)
         .comAPalavraCerta('ISSO')
         .comAPergunta(pergunta6)
         .comONumeroBotao(6)
         .comAOrientacao(orientacao.VERTICAL)
-        .constroe(),   
+        .constroe(),
 ]
 new JogoPalavraCruzada(listaDePalavras)

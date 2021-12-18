@@ -28,6 +28,7 @@ class JogoPalavraCruzada {
         if(this.palavras.find(p=>!p.isCorreta())==null){
             // alert('JOGO FINALIZADO');
             document.getElementById("vitoria").style.display= "block"
+            isJogoAcabado = true
         }
     }
 }
