@@ -43,7 +43,6 @@ class Palavra {
 
         }
     }
-
     vaiParaCasaAnterior(casaAtual) {
         const indice = this.pegaIndiceDaCasaAnterior(casaAtual)
         this.colocaFocoNaCasaComIndice(indice)
@@ -66,7 +65,7 @@ class Palavra {
     acoesQuandoClicarNoBotao() {
         this.identifiqueAPalavraSelecionada()
         this.colocaFocoNaCasaComIndice(0)
-        this.jogoPalavraCruzada.mudaOrientacaoPara(this.orientacao)
+        this.jogoPalavraCruzada.acoesQuandoSelecionaUmaPergunta(this.orientacao)
     }
     tiraFocoDaPalavra() {
         this.casas.forEach(c => c.tiraFocoDaCasa())

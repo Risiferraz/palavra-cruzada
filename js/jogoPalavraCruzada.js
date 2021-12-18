@@ -1,6 +1,7 @@
 class JogoPalavraCruzada {
-    constructor(palavras) {
+    constructor(palavras, cronometro) {
         this.orientacao = orientacao.HORIZONTAL;
+        this.cronometro = cronometro;
         this.palavras = palavras;
         this.palavras.forEach(p => p.jogoPalavraCruzada = this)
         this.pontuacao=0
@@ -28,7 +29,11 @@ class JogoPalavraCruzada {
         if(this.palavras.find(p=>!p.isCorreta())==null){
             // alert('JOGO FINALIZADO');
             document.getElementById("vitoria").style.display= "block"
-            isJogoAcabado = true
+            this.cronometro.pararCronometro()
         }
+    }
+    acoesQuandoSelecionaUmaPergunta(orientacao){
+        this.mudaOrientacaoPara(orientacao)
+        this.cronometro.iniciaCronometro()
     }
 }

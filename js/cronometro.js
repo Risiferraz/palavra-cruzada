@@ -2,10 +2,10 @@ class Cronometro {
     constructor (){
         this.segundos = 0
         this.minutos = 0
-        this.isJogoAcabado=false
+        this.isCronometroAtivo=false
     }
     atualizaCronometro(){
-        if(!this.isJogoAcabado){
+        if(this.isCronometroAtivo){
             this.segundos++
             if (this.segundos>=60){
                 this.minutos++
@@ -19,5 +19,11 @@ class Cronometro {
             const cronometro = `${minutosString}:${segundosString}`
             document.getElementById('cronometro').textContent= cronometro
         }
+    }
+    pararCronometro(){
+        this.isCronometroAtivo=false
+    }
+    iniciaCronometro(){
+        this.isCronometroAtivo=true
     }
 }

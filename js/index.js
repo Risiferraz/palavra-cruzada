@@ -107,4 +107,4 @@ const listaDePalavras = [
         .comAOrientacao(orientacao.VERTICAL)
         .constroe(),
 ]
-new JogoPalavraCruzada(listaDePalavras)
+new JogoPalavraCruzada(listaDePalavras, cronometro)
