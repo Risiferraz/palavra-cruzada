@@ -21,6 +21,10 @@ class JogoPalavraCruzada {
         this.pontuacao+=10
         this.atualizaPontuacaoNoJogo()
     }
+    reduzPontuacao(){
+        this.pontuacao-=1
+        this.atualizaPontuacaoNoJogo()
+    }
     realizaAcoesAoAcertarPalavra(){
         this.adicionaPontuacao()
         this.verificaSeJogoFoiFinalizado()

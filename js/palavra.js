@@ -15,15 +15,22 @@ class Palavra {
     }
     realizeAcoesAoTerminarAPalavra() {
         if (this.isCorreta()) {
-            this.casas.forEach(c => c.marcaPalavraCerta())
-            this.jogoPalavraCruzada.realizaAcoesAoAcertarPalavra()
+            this.realizaAcoesParaPalavraCorreta()
         } else {
-            this.casas.forEach(c => c.marcaPalavraErrada())
-            setTimeout(() => {
-                this.casas.forEach(c => c.resetaCasa())
-                this.colocaFocoNaCasaComIndice(0)
-            }, 1000)
+            this.realizaAcoesParaPalavraErrada()
         }
+    }
+    realizaAcoesParaPalavraErrada(){
+        this.casas.forEach(c => c.marcaPalavraErrada())
+        setTimeout(() => {
+            this.casas.forEach(c => c.resetaCasa())
+            this.colocaFocoNaCasaComIndice(0)
+        }, 1000)
+        this.jogoPalavraCruzada.reduzPontuacao()
+    }
+    realizaAcoesParaPalavraCorreta(){
+        this.casas.forEach(c => c.marcaPalavraCerta())
+        this.jogoPalavraCruzada.realizaAcoesAoAcertarPalavra()  
     }
     mostraCasa() {
         // this.casas.forEach(c => {
