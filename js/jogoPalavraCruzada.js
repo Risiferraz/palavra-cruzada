@@ -34,6 +34,8 @@ class JogoPalavraCruzada {
             // alert('JOGO FINALIZADO');
             document.getElementById("vitoria").style.display= "block"
             this.cronometro.pararCronometro()
+            this.pontuacao = new JuizDoJogo(this.cronometro, this.pontuacao).pegaPontuacaoFinal()
+            this.atualizaPontuacaoNoJogo()
         }
     }
     acoesQuandoSelecionaUmaPergunta(orientacao){

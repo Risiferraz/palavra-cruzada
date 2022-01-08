@@ -26,4 +26,7 @@ class Cronometro {
     iniciaCronometro(){
         this.isCronometroAtivo=true
     }
+    isMenosTrintaMinutos(){
+        return this.minutos<30
+    }
 }
