@@ -47,7 +47,6 @@ class Palavra {
 
         } else {
             this.realizeAcoesAoTerminarAPalavra()
-
         }
     }
     vaiParaCasaAnterior(casaAtual) {
