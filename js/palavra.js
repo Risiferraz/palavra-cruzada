@@ -76,4 +76,12 @@ class Palavra {
     tiraFocoDaPalavra() {
         this.casas.forEach(c => c.tiraFocoDaCasa())
     }
+    respondePalavra(){
+        this.casas.forEach(c => c.apareceResposta())
+        for(let indice=0; indice<this.casas.length;indice++) {//indice é o mesmo de posição = i
+            const resposta = this.palavraCerta.charAt(indice)
+            this.casas[indice].apareceResposta(resposta)
+        }
+        this.realizeAcoesAoTerminarAPalavra()
+    }
 }

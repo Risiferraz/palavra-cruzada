@@ -75,4 +75,7 @@ class Casa {
     pegaPalavraCerta() {
         return this.palavra[this.orientacaoDaVez]
     }
+    apareceResposta(resposta){
+        this.elementoDoHTML.value = resposta
+    }
 }

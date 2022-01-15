@@ -6,6 +6,8 @@ class JogoPalavraCruzada {
         this.palavras.forEach(p => p.jogoPalavraCruzada = this)
         this.pontuacao=0
         this.atualizaPontuacaoNoJogo()
+        this.botaoRespondeTudo=document.getElementById('botao-responde-tudo')
+        this.botaoRespondeTudo.addEventListener('click',()=>this.respondeTudo())
     }
     tiraOFocoDeTodasAsPalavras() {
         this.palavras.forEach(p => p.tiraFocoDaPalavra())
@@ -42,4 +44,7 @@ class JogoPalavraCruzada {
         this.mudaOrientacaoPara(orientacao)
         this.cronometro.iniciaCronometro()
     }
+    respondeTudo(){
+        this.palavras.forEach(p => p.respondePalavra())
+    }   
 }
