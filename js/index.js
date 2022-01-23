@@ -1,7 +1,8 @@
+new Score()
+
 const cronometro =new Cronometro()
     setInterval(() => {
     cronometro.atualizaCronometro()
-    console.log('RISI')
     }, 1000);
 
 //TODO FAZER O BUILDER DO JOGO PALAVRA CRUZADA
