@@ -8,6 +8,7 @@ class JogoPalavraCruzada {
         this.atualizaPontuacaoNoJogo()
         this.botaoRespondeTudo=document.getElementById('botao-responde-tudo')
         this.botaoRespondeTudo.addEventListener('click',()=>this.respondeTudo())
+        document.getElementById("jogo-finalizado").style.display= "none"
     }
     tiraOFocoDeTodasAsPalavras() {
         this.palavras.forEach(p => p.tiraFocoDaPalavra())
@@ -31,10 +32,15 @@ class JogoPalavraCruzada {
         this.adicionaPontuacao()
         this.verificaSeJogoFoiFinalizado()
     }
+    isJogoFinalizado(){
+        return this.palavras.find(p=>!p.isCorreta())==null
+    }
     verificaSeJogoFoiFinalizado(){
-        if(this.palavras.find(p=>!p.isCorreta())==null){
+        if(this.isJogoFinalizado()){
             // alert('JOGO FINALIZADO');
+            document.getElementById("jogo-finalizado").style.display= "block"
             document.getElementById("vitoria").style.display= "block"
+            document.getElementById("jogo-em-andamento").style.display= "none"
             this.cronometro.pararCronometro()
             this.pontuacao = new JuizDoJogo(this.cronometro, this.pontuacao).pegaPontuacaoFinal()
             this.atualizaPontuacaoNoJogo()

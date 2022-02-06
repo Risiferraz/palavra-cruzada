@@ -1,7 +1,7 @@
 class Score {
     constructor() {
         document.getElementById('envia-pontuacao').addEventListener('click', () => this.enviaPontuacao())
-        document.getElementById('mostrar-tabela-pontuacao').addEventListener('click', () => this.mostraTabelaPontuacao())
+        // document.getElementById('mostrar-tabela-pontuacao').addEventListener('click', () => this.mostraTabelaPontuacao())
     }
     enviaPontuacao() {
         const listaDePontuacao = this._pegaListaDePontuacao()
