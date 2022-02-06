@@ -1,5 +1,4 @@
-new Score()
-
+const score = new Score()
 const cronometro =new Cronometro()
     setInterval(() => {
     cronometro.atualizaCronometro()
@@ -108,4 +107,4 @@ const listaDePalavras = [
         .comAOrientacao(orientacao.VERTICAL)
         .constroe(),
 ]
-new JogoPalavraCruzada(listaDePalavras, cronometro)
+new JogoPalavraCruzada(listaDePalavras, cronometro, score)

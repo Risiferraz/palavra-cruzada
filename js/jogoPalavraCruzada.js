@@ -1,5 +1,6 @@
 class JogoPalavraCruzada {
-    constructor(palavras, cronometro) {
+    constructor(palavras, cronometro, score) {
+        this.score=score
         this.orientacao = orientacao.HORIZONTAL;
         this.cronometro = cronometro;
         this.palavras = palavras;
@@ -38,6 +39,7 @@ class JogoPalavraCruzada {
     verificaSeJogoFoiFinalizado(){
         if(this.isJogoFinalizado()){
             // alert('JOGO FINALIZADO');
+            document.getElementById("pontuacao-final").value=this.pontuacao
             document.getElementById("jogo-finalizado").style.display= "block"
             document.getElementById("vitoria").style.display= "block"
             document.getElementById("jogo-em-andamento").style.display= "none"
