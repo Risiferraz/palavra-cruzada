@@ -64,6 +64,7 @@ class Palavra {
     }
     identifiqueAPalavraSelecionada() {
         this.jogoPalavraCruzada.tiraOFocoDeTodasAsPalavras()
+        this.jogoPalavraCruzada.setaPerguntaSelecionada(this.pergunta)
         document.getElementById('pergunta-da-vez').textContent = this.pergunta;
         this.casas.forEach(casa => casa.marcaPalavraSelecionada())
         this.casas.forEach(casa => casa.orientacaoDaVez=this.orientacao)
@@ -83,5 +84,8 @@ class Palavra {
             this.casas[indice].apareceResposta(resposta)
         }
         this.realizeAcoesAoTerminarAPalavra()
+    }
+    daDica(){
+        Math.random(0)
     }
 }
