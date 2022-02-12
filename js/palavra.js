@@ -64,7 +64,7 @@ class Palavra {
     }
     identifiqueAPalavraSelecionada() {
         this.jogoPalavraCruzada.tiraOFocoDeTodasAsPalavras()
-        this.jogoPalavraCruzada.setaPerguntaSelecionada(this.pergunta)
+        this.jogoPalavraCruzada.setaPerguntaSelecionada(this)
         document.getElementById('pergunta-da-vez').textContent = this.pergunta;
         this.casas.forEach(casa => casa.marcaPalavraSelecionada())
         this.casas.forEach(casa => casa.orientacaoDaVez=this.orientacao)
@@ -86,6 +86,21 @@ class Palavra {
         this.realizeAcoesAoTerminarAPalavra()
     }
     daDica(){
-        Math.random(0)
+        const totalDeCasasVazias = this.casas.filter(c=>!c.valor).length
+        const percentual = totalDeCasasVazias*0.34
+        const casasParaPreencher = Math.ceil(percentual)
+        for(let indice=0; indice<casasParaPreencher; indice++){
+            this.colocaDicaNaCasa()
+        }
+    }
+    colocaDicaNaCasa(){
+        const total = this.casas.length
+        const indiceSorteado = Math.floor(Math.random()*total)
+        if (!this.casas[indiceSorteado].valor){
+            const resposta = this.palavraCerta.charAt(indiceSorteado)
+            this.casas[indiceSorteado].apareceResposta(resposta)
+        }else {
+            this.colocaDicaNaCasa()
+        }
     }
 }

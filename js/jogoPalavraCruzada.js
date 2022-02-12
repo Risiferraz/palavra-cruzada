@@ -1,4 +1,5 @@
 class JogoPalavraCruzada {
+    palavraSelecionada=null
     constructor(palavras, cronometro, score) {
         this.score=score
         this.orientacao = orientacao.HORIZONTAL;
@@ -9,6 +10,7 @@ class JogoPalavraCruzada {
         this.atualizaPontuacaoNoJogo()
         this.botaoRespondeTudo=document.getElementById('botao-responde-tudo')
         this.botaoRespondeTudo.addEventListener('click',()=>this.respondeTudo())
+       document.getElementById('dica').addEventListener('click',()=>this.daDica())
         document.getElementById("jogo-finalizado").style.display= "none"
     }
     tiraOFocoDeTodasAsPalavras() {
@@ -54,5 +56,11 @@ class JogoPalavraCruzada {
     }
     respondeTudo(){
         this.palavras.forEach(p => p.respondePalavra())
-    }   
+    }
+    setaPerguntaSelecionada(pergunta){
+        this.perguntaSelecionada=pergunta
+    }
+    daDica(){
+        this.perguntaSelecionada.daDica()
+    }
 }
