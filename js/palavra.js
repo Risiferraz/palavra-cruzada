@@ -6,7 +6,7 @@ class Palavra {
         this.casas = casas;
         this.palavraCerta = palavraCerta;
         this.pergunta = pergunta;
-        this.casas.forEach(c => c.palavra[this.orientacao] =this);
+        this.casas.forEach(c => c.palavra[this.orientacao] = this);
         this.botao.addEventListener('click', () => this.acoesQuandoClicarNoBotao())
     }
     isCorreta() {
@@ -20,7 +20,7 @@ class Palavra {
             this.realizaAcoesParaPalavraErrada()
         }
     }
-    realizaAcoesParaPalavraErrada(){
+    realizaAcoesParaPalavraErrada() {
         this.casas.forEach(c => c.marcaPalavraErrada())
         setTimeout(() => {
             this.casas.forEach(c => c.resetaCasa())
@@ -28,9 +28,9 @@ class Palavra {
         }, 1000)
         this.jogoPalavraCruzada.reduzPontuacao()
     }
-    realizaAcoesParaPalavraCorreta(){
+    realizaAcoesParaPalavraCorreta() {
         this.casas.forEach(c => c.marcaPalavraCerta())
-        this.jogoPalavraCruzada.realizaAcoesAoAcertarPalavra()  
+        this.jogoPalavraCruzada.realizaAcoesAoAcertarPalavra()
     }
     mostraCasa() {
         // this.casas.forEach(c => {
@@ -67,7 +67,7 @@ class Palavra {
         this.jogoPalavraCruzada.setaPerguntaSelecionada(this)
         document.getElementById('pergunta-da-vez').textContent = this.pergunta;
         this.casas.forEach(casa => casa.marcaPalavraSelecionada())
-        this.casas.forEach(casa => casa.orientacaoDaVez=this.orientacao)
+        this.casas.forEach(casa => casa.orientacaoDaVez = this.orientacao)
     }
     acoesQuandoClicarNoBotao() {
         this.identifiqueAPalavraSelecionada()
@@ -77,30 +77,41 @@ class Palavra {
     tiraFocoDaPalavra() {
         this.casas.forEach(c => c.tiraFocoDaCasa())
     }
-    respondePalavra(){
+    respondePalavra() {
         this.casas.forEach(c => c.apareceResposta())
-        for(let indice=0; indice<this.casas.length;indice++) {//indice é o mesmo de posição = i
+        for (let indice = 0; indice < this.casas.length; indice++) {//indice é o mesmo de posição = i
             const resposta = this.palavraCerta.charAt(indice)
             this.casas[indice].apareceResposta(resposta)
         }
         this.realizeAcoesAoTerminarAPalavra()
     }
-    daDica(){
-        const totalDeCasasVazias = this.casas.filter(c=>!c.valor).length
-        const percentual = totalDeCasasVazias*0.34
-        const casasParaPreencher = Math.ceil(percentual)
-        for(let indice=0; indice<casasParaPreencher; indice++){
+    daDica() {
+        this.casas.forEach(c => c.resetaCasa())
+        this.preencheDicasDeAcordoComQuantidadeDeCasasDaPalavra()
+        this.colocaFocaNaPrimeiraCasaNaoPreenchida()
+    }
+    preencheDicasDeAcordoComQuantidadeDeCasasDaPalavra() {
+        const quantidadeDeCasasParaPreencher = this.pegaQuantidadeDeCasasQueSeraoPreenchidasDaDica()
+        for (let indice = 0; indice < quantidadeDeCasasParaPreencher; indice++) {
             this.colocaDicaNaCasa()
         }
     }
-    colocaDicaNaCasa(){
-        const total = this.casas.length
-        const indiceSorteado = Math.floor(Math.random()*total)
-        if (!this.casas[indiceSorteado].valor){
+    pegaQuantidadeDeCasasQueSeraoPreenchidasDaDica() {
+        const totalDeCasasVazias = this.casas.filter(c => !c.valor).length
+        const percentual = totalDeCasasVazias * 0.34
+        return Math.ceil(percentual)
+    }
+    colocaDicaNaCasa() {
+        const total = this.casas.length//tamanho = quantidade
+        const indiceSorteado = Math.floor(Math.random() * total)
+        if (!this.casas[indiceSorteado].valor) {
             const resposta = this.palavraCerta.charAt(indiceSorteado)
             this.casas[indiceSorteado].apareceResposta(resposta)
-        }else {
+        } else {
             this.colocaDicaNaCasa()
         }
+    }
+    colocaFocaNaPrimeiraCasaNaoPreenchida() {
+        this.casas[0].colocaFocoNoElemento()
     }
 }

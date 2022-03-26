@@ -78,6 +78,7 @@ class Casa {
     apareceResposta(resposta){
         this.elementoDoHTML.value = resposta
         this.valor=resposta
+        this.marcaPalavraCerta()
     }
 
 }
