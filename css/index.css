@@ -30,3 +30,12 @@ input{
 #vitoria{
     display: none;
 }
+.botao-jogo{
+    background-color: rgb(74, 138, 98);
+    padding: 10px;
+    border-radius: 5px;
+}
+.botao-jogo:disabled{
+    background-color: aqua;
+    opacity: 50%;  
+}

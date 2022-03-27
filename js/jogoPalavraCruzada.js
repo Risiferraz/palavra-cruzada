@@ -71,6 +71,7 @@ class JogoPalavraCruzada {
             }
             else {
                 alert ('Dicas esgotadas')
+                document.getElementById('dica').disabled = true
             }
         }
     }
